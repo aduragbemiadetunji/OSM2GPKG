@@ -10,6 +10,16 @@ frame = gpd.read_file(gpkg, layer="frame_3857")
 ocean = gpd.read_file(gpkg, layer="ocean_3857")
 land  = gpd.read_file(gpkg, layer="land_3857")
 
+docks  = gpd.read_file(gpkg, layer="docks_3857")
+habours  = gpd.read_file(gpkg, layer="habours_3857")
+ferry_terms  = gpd.read_file(gpkg, layer="ferry_terms_3857")
+ferry_routes  = gpd.read_file(gpkg, layer="ferry_routes_3857")
+tss  = gpd.read_file(gpkg, layer="tss_3857")
+rocks_reefs  = gpd.read_file(gpkg, layer="rocks_reefs_3857")
+bridges  = gpd.read_file(gpkg, layer="bridges_3857")
+seas  = gpd.read_file(gpkg, layer="seas_3857")
+
+
 # Optional extras (comment out if you don’t want them)
 try:
     water = gpd.read_file(gpkg, layer="water_3857")
@@ -38,6 +48,23 @@ if not water.empty:
     water.plot(ax=ax, facecolor="#a0c8f0", edgecolor="#74a8d8", linewidth=0.4, alpha=0.95, zorder=2)
 if not coast.empty:
     coast.plot(ax=ax, color="#2f7f3f", linewidth=1.2, zorder=3)
+
+if not docks.empty:
+    docks.plot(ax=ax, color="brown", linewidth=1.2, zorder=3)
+if not habours.empty:
+    habours.plot(ax=ax, color="red", linewidth=1.2, zorder=3)
+if not ferry_terms.empty:
+    ferry_terms.plot(ax=ax, color="yellow", linewidth=1.2, zorder=3)
+if not ferry_routes.empty:
+    ferry_routes.plot(ax=ax, color="orange", linewidth=1.2, zorder=3)
+if not tss.empty:
+    tss.plot(ax=ax, color="blue", linewidth=1.2, zorder=3)
+if not rocks_reefs.empty:
+    rocks_reefs.plot(ax=ax, color="black", linewidth=1.2, zorder=3)
+if not bridges.empty:
+    bridges.plot(ax=ax, color="white", linewidth=1.2, zorder=3)
+if not seas.empty:
+    seas.plot(ax=ax, color="green", linewidth=1.2, zorder=3)
 
 # Fit exactly to the box, no margins
 ax.set_xlim(minx, maxx); ax.set_ylim(miny, maxy)
