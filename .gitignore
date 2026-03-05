@@ -1,4 +1,4 @@
 # OSM Files ignore
-.osmFiles/
-.figures/
-.files/
+osmFiles/
+figures/
+files/
