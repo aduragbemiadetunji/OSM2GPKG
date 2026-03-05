@@ -1,9 +1,4 @@
 # OSM Files ignore
 .osmFiles/
 .figures/
-
-
-#files ignore
-.files/trondheim.gpkg
-.files/Trondheim_Stokkoya.gpkg
-.files\Alesund_Langevag.gpkg
+.files/

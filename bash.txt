@@ -1,0 +1,25 @@
+1. osmium extract -p area.geojson planet-latest.osm.pbf -o aoi.pbf --overwrite
+
+
+# Using GeoJSON polygon
+osmium extract -p area.geojson planet-latest.osm.pbf -o aoi.pbf --overwrite
+
+# OR using a .poly file
+osmium extract -p area.poly planet-latest.osm.pbf -o aoi.pbf --overwrite
+
+osmium extract -b 9.4153,63.5023,10.1336,63.7148 osmFiles/norway-251022.osm.pbf -o trondheim.pbf --overwrite
+
+
+osmium tags-filter trondheim.pbf \
+  nwr seamark:type= \
+  nwr seamark:type=buoy_* seamark:type=beacon_* seamark:type=light_* \
+  nwr harbour= \
+  nwr leisure=marina \
+  nwr amenity=ferry_terminal route=ferry \
+  nwr man_made=pier man_made=breakwater man_made=groyne man_made=seawall man_made=jetty \
+  nwr natural=coastline natural=water water= \
+  nwr waterway= \
+  -o trondheim_marine.pbf --overwrite
+
+
+2. osmium cat trondheim_marine.pbf -o trondheim_marine.osm -f osm -O
