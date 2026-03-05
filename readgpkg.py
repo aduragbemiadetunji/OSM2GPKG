@@ -2,7 +2,7 @@
 import geopandas as gpd
 import matplotlib.pyplot as plt
 
-gpkg = "files/basemap.gpkg"
+gpkg = "testing.gpkg"
 
 # Read the exact AOI box + layers (UTM = metric CRS)
 # You can also read frame_wgs84, frame_3857 frame_utm depending on the format you want for your application.

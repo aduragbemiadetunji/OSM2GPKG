@@ -5,12 +5,12 @@ from shapely.ops import unary_union
 from shapely.geometry import box
 import matplotlib.pyplot as plt
 
-OSM_XML   = "osmFiles/Helsingborg_Helsingor.osm"  # change this path to your new AOI .osm
+OSM_XML   = "testing.osm"  # change this path to your new AOI .osm
 LAND_SHP  = r"osmFiles/land-polygons-complete-4326/land-polygons-complete-4326/land_polygons.shp"
 WATER_SHP = r"osmFiles/water-polygons-split-4326/water-polygons-split-4326/water_polygons.shp"  # optional
 
 #directory to save the gpkg file
-OUT_GPKG = "files/basemap.gpkg"
+OUT_GPKG = "testing.gpkg"
 
 # --- (1) HARD-RESET THE OUTPUT GPKG ---
 if os.path.exists(OUT_GPKG):
@@ -18,7 +18,13 @@ if os.path.exists(OUT_GPKG):
 
 # Bounds from OSM → frame (WGS84)
 b = ET.parse(OSM_XML).getroot().find("bounds")
-minx, miny, maxx, maxy = map(float, (b.get("minlon"), b.get("minlat"), b.get("maxlon"), b.get("maxlat")))
+
+#Specify the boundary box area for the map.
+ 
+# minx, miny, maxx, maxy = map(float, (b.get("minlon"), b.get("minlat"), b.get("maxlon"), b.get("maxlat"))) #Automatic
+minx, miny, maxx, maxy = 9.4153,63.5023,10.1336,63.7148 #Manual
+
+
 frame_wgs84 = gpd.GeoDataFrame(geometry=[box(minx, miny, maxx, maxy)], crs="EPSG:4326")
 
 # Land/Ocean mask
