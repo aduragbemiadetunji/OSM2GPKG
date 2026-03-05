@@ -45,27 +45,39 @@ You can download a larger area, such as the full planet from https://planet.open
 You get a .pbf file from these websites. You need to convert the .pbf files to .osm, and then from .osm to .gpkg.
 
 ## To extract your large area of interest from larger area of interest
-### conda install -c conda-forge osmium-tool
-### pip install osmium
-### brew install osmium-tool
+```
+conda install -c conda-forge osmium-tool
+pip install osmium
+brew install osmium-tool
+```
 
 Use the terminal and run:
-`osmium extract -b <area of interest co-ordinate> <your_pbf_file.pbf> -o <name_of_smaller_pbf.pbf> --overwrite`
+```bash
+osmium extract -b <area of interest co-ordinate> <your_pbf_file.pbf> -o <name_of_smaller_pbf.pbf> --overwrite
+```
 For example:
-`osmium extract -b 9.4153,63.5023,10.1336,63.7148 osmFiles/norway-251022.osm.pbf -o trondheim.pbf --overwrite`
+```bash
+osmium extract -b 9.4153,63.5023,10.1336,63.7148 osmFiles/norway-251022.osm.pbf -o trondheim.pbf --overwrite
+```
 
 
 
 ## To convert from .pbf to .osm
 For fast processing, use the terminal and run:
-`osmium cat <name_of_smaller_pbf.pbf> -o <name_of_smaller_osm.osm> -f osm -O`
+```bash
+osmium cat <name_of_smaller_pbf.pbf> -o <name_of_smaller_osm.osm> -f osm -O
+```
 For example:
-`osmium cat trondheim.pbf -o trondheim.osm -f osm -O`
+```bash
+osmium cat trondheim.pbf -o trondheim.osm -f osm -O
+```
 
 
 You can then run as described above to convert your osm file to gpkg and read it. 
 You have to manually set the boundarybox area of interest in osm2gpkg.py as in
-`minx, miny, maxx, maxy = 9.4153,63.5023,10.1336,63.7148 #Manual`
+```python
+minx, miny, maxx, maxy = 9.4153,63.5023,10.1336,63.7148 #Manual
+```
 and comment the automatic.
 
 Note, the larger your area, and the many the features, the longer it takes to convert to osm.
